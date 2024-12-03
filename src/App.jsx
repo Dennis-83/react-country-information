@@ -17,6 +17,28 @@ function App() {
         }
     }
 
+    function changeCountryTextColor(country){
+        let color = '';
+        switch (country.region) {
+            case 'Africa':
+                color = 'blue';
+                break;
+            case 'Americas':
+                color = 'green';
+                break;
+            case 'Asia':
+                color = 'red';
+                break;
+            case 'Europe':
+                color = 'yellow';
+                break;
+            case 'Oceania':
+                color = 'purple';
+                break;
+        }
+        return color
+    }
+
     return (
         <>
             <button type="button" onClick={fetchCountries}
@@ -27,7 +49,7 @@ function App() {
             {countries.map((country) => {
                 // console.log(country.name.common);
                 return <>
-                <p>
+                <p className={changeCountryTextColor(country)}>
                     {country.flag} {country.name.common}
                 </p>
                 <p>
