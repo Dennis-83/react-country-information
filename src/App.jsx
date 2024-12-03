@@ -9,7 +9,9 @@ function App() {
     async function fetchCountries() {
         try {
             const result = await axios.get(`https://restcountries.com/v3.1/all?fields=name,flag,population,region`);
-            setCountries(result.data);
+            setCountries(result.data.sort((countryA, countryB) => {
+                return countryA.population - countryB.population
+            }));
         } catch (e) {
             console.error(e);
         }
